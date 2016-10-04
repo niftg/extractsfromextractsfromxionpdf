@@ -24,10 +24,11 @@ def fontfind(font,tree):
 def findlogexport(pbt, fname):
     f = open(fname, "w")
     for i in pbt:
-        f.write("{p}:{b}\t{t}\n".format(**i))
+        f.write(("{p}:{b}\t{t}".format(**i)).strip())
+        f.write("\n")
     f.close()
 
 tree = treeprepare("D:\\xionpdf\\xionpdf_xmlextract.xml")
 for i in ["kardinal", "ayaka"]:
-    findlogexport(fontfind(i, tree), "D:\\xionpdf\\{0}findlog.txt".format(i))
+    findlogexport(fontfind(i, tree), "D:\\xionpdf\\{0}findlog.tsv".format(i))
     print i + " OK"
